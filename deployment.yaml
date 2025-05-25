@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flower-app-deployment
+  name: nagendra-app-deployment
 spec: #Defines the deployment behivour
   replicas: 3
   selector:

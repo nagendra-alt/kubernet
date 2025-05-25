@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nagendra-app-deployment
+  name: nagendrab-app-deployment
 spec: #Defines the deployment behivour
   replicas: 3
   selector:
     matchLabels:
-      app: web
+      app: nagendra
   template:
     metadata:
       labels:
-        app: web
+        app: nagendra
     spec: #Define the POD behivour
       containers:
       - name: cart-app
@@ -24,3 +24,16 @@ spec: #Defines the deployment behivour
             cpu: "50m"
         ports:
         - containerPort: 3015
+---
+#Writing service.yaml file to expose the application
+apiVersion: v1
+kind: Service
+metadata:
+  name: nagendra-flower-app-svc
+spec:
+  selector:
+    app: nagendra
+  ports:
+  - port: 3016 #service port number
+    targetPort: 3015 #container port number
+  type: LoadBalancer
